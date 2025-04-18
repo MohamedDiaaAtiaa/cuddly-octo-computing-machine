@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    background: #cceff9;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    overflow: hidden;
+  }
+  
+  .ocean {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .bubbles::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 2px, transparent 2px);
+    background-size: 20px 20px;
+    animation: bubblesUp 20s linear infinite;
+  }
+  
+  @keyframes bubblesUp {
+    from { background-position-y: 100%; }
+    to { background-position-y: 0%; }
+  }
+  
+  .octo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .floating {
+    animation: floaty 4s ease-in-out infinite;
+  }
+  
+  @keyframes floaty {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-10px); }
+  }
+  
+  .octo-head {
+    background: pink;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s;
+  }
+  
+  .octo-head.computing {
+    box-shadow: 0 0 30px 5px #ff80ab;
+  }
+  
+  .eye {
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 55px;
+    animation: blink 5s infinite;
+  }
+  
+  .left-eye { left: 45px; }
+  .right-eye { right: 45px; }
+  
+  @keyframes blink {
+    0%, 97%, 100% { height: 30px; }
+    98%, 99% { height: 5px; }
+  }
+  
+  .cheeks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 40% 75%, #ff80ab 10px, transparent 20px),
+                radial-gradient(circle at 60% 75%, #ff80ab 10px, transparent 20px);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .octo-head.computing .cheeks {
+    opacity: 1;
+  }
+  
+  .mouth {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: darkred;
+    transition: all 0.3s ease;
+  }
+  
+  /* Tentacles */
+  .tentacles {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+  }
+  
+  .tentacle {
+    width: 28px;
+    height: 50px;
+    background: pink;
+    border-radius: 0 0 20px 20px;
+    transform-origin: top center;
+    animation: idleWiggle 2s infinite ease-in-out;
+  }
+  
+  .octo-head.computing .tentacle {
+    animation: computeWiggle 0.4s infinite ease-in-out;
+  }
+  
+  .t1 { transform: rotate(-10deg); }
+  .t2 { transform: rotate(-5deg); }
+  .t3 { transform: rotate(0deg); }
+  .t4 { transform: rotate(5deg); }
+  .t5 { transform: rotate(10deg); }
+  
+  @keyframes idleWiggle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+  
+  @keyframes computeWiggle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(12px); }
+  }
+  
+  /* Button */
+  #computeBtn {
+    margin-top: 25px;
+    padding: 12px 28px;
+    font-size: 18px;
+    background: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  }
+  
+  #computeBtn:hover {
+    background: #f50057;
+    transform: scale(1.05);
+  }
+  
+  /* Speech bubble */
+  .speech-bubble {
+    background: white;
+    border-radius: 20px;
+    padding: 12px 18px;
+    margin-top: 12px;
+    font-size: 16px;
+    color: #444;
+    position: relative;
+    display: inline-block;
+    min-width: 160px;
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+  
